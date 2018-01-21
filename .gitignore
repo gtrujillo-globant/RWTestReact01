@@ -1,0 +1,6 @@
+*.swp
+.babelrc
+.cache
+dist
+node_modules
+

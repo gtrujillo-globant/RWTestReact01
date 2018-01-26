@@ -1,27 +1,47 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-class MyCounter extends React.Component {
+class MyComponent extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { counter: 0 };
-        this.clickHandler = this.clickHandler.bind(this);
-    }
-
-    clickHandler() {
-        this.setState({ counter: this.state.counter + 1 });
+        this.state = { name: props.name };
     }
 
     render() {
         return (
-            <div>
-                <h1>setState pitfalls</h1>
-                <div>Counter is: {this.state.counter}</div>
-                <button onClick={this.clickHandler}>1Up!</button>
-            </div>
+            <div>Hello, {this.state.name}</div>
+        )
+    }
+}
+
+class MyContainer extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { name: "Click on the button..." };
+    }
+
+    names = ["Marty Mc. Fly", "Emmett L. Brown", "George Mc. Fly", "Biff Tannen", "Lorraine Baines"];
+
+    clickHandler = () => {
+        console.log('Name (before): ', this.state.name);
+        const index = Math.floor(Math.random()*this.names.length);
+        this.setState(
+            { name: this.names[index] },
+            () => {
+                console.log('Name (after): ', this.state.name);
+            }
+        );
+    }
+
+    render() {
+        return (
+            <React.Fragment>
+                <MyComponent name={this.state.name} />
+                <button onClick={this.clickHandler}>Change name!</button>
+            </React.Fragment>
         )
     }
 }
 
 const mountNode = document.getElementById('app');
-ReactDOM.render(<MyCounter />, mountNode);
+ReactDOM.render(<MyContainer />, mountNode);

@@ -15,7 +15,7 @@ class MyCounter extends React.Component {
     render() {
         return (
             <div>
-                <h1>setState piftalls</h1>
+                <h1>setState pitfalls</h1>
                 <div>Counter is: {this.state.counter}</div>
                 <button onClick={this.clickHandler}>1Up!</button>
             </div>

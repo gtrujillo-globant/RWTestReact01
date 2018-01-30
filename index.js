@@ -7,7 +7,7 @@ class UncontrolledComponent extends React.Component {
     clickHandler = () => {
         this.setState(
             (state) => ({ counter: state.counter + 1 }),
-            () => { console.log('%cIncreased uncontrolled state to new value: %s','color: green',this.state.counter); }
+            () => { console.log('%c Increased uncontrolled state to new value: %s','color: green',this.state.counter); }
         );
     };
 
@@ -62,7 +62,7 @@ class MyContainer extends React.Component {
     uncontrolledClickHandler = () => {
         this.uncontrolled.setState(
             (state) => ({ counter: state.counter - 1}),
-            () => { console.log('%cDecreased uncontrolled state to new value: ','color:pink',this.uncontrolled.state.counter); }
+            () => { console.log('%c Decreased uncontrolled state to new value: %s','color:pink',this.uncontrolled.state.counter); }
         );
     }
 
